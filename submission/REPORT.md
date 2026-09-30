@@ -55,8 +55,8 @@
 
 ## 5. Tracing và prompt versioning
 
-- **Cách xác nhận traces do chính tôi tạo trong project cá nhân:** `.env` dùng key pair của project `day13-k4-l3b-2A202602536`. Tôi truy vấn `GET /api/public/v2/observations` bằng chính key đó và thấy 16 traces. Mỗi trace có `correlation_id` trùng với một dòng trong `data/logs.jsonl` do tôi chạy, `user_id` là hash 12 ký tự và `environment=dev`. Danh sách ID: [10-prompt-trace-ids](evidence/10-prompt-trace-ids.txt).
-- **Cấu trúc root/retrieval/generation observations:** trace `day13-agent-request` → `lab-agent-run` (agent, metadata `feature`, `model`, `correlation_id`, `prompt_*`, `query_preview` đã scrub) → `retrieval` (retriever, output `doc_count` + preview tài liệu) và `generation` (generation, có `model`, `usage_details` input/output/total, `cost_details`, `completion_start_time` cho TTFT và link tới prompt managed). Không bật `capture_input/output` tự động; input/output của generation chỉ là preview đã qua `summarize_text` (scrub PII). 16 traces đều có đủ 3 observation (16/16/16).
+- **Cách xác nhận traces do chính tôi tạo trong project cá nhân:** `.env` dùng key pair của project `day13-k4-l3b-2A202602536`. Tôi truy vấn `GET /api/public/v2/observations` bằng chính key đó và thấy 41 traces ([06-trace-list.txt](evidence/06-trace-list.txt), ảnh [06-trace-list.png](evidence/06-trace-list.png)). Mỗi trace có `correlation_id` trùng với một dòng trong `data/logs.jsonl` do tôi chạy, `user_id` là hash 12 ký tự và `environment=dev`. Trace ID theo từng bước: [10-prompt-trace-ids](evidence/10-prompt-trace-ids.txt) (CP2) và [14-incident-trace](evidence/14-incident-trace.txt) (CP3).
+- **Cấu trúc root/retrieval/generation observations:** trace `day13-agent-request` → `lab-agent-run` (agent, metadata `feature`, `model`, `correlation_id`, `prompt_*`, `query_preview` đã scrub) → `retrieval` (retriever, output `doc_count` + preview tài liệu) và `generation` (generation, có `model`, `usage_details` input/output/total, `cost_details`, `completion_start_time` cho TTFT và link tới prompt managed). Không bật `capture_input/output` tự động; input/output của generation chỉ là preview đã qua `summarize_text` (scrub PII). Cả 41 traces đều có đủ 3 observation (41/41/41), xem ảnh [07-08-trace-waterfall-metadata.png](evidence/07-08-trace-waterfall-metadata.png).
 - **Cách nối trace với log:** `correlation_id` do middleware sinh được truyền vào `LabAgent.run` và gắn vào trace metadata qua `propagate_attributes`. Ví dụ `req-bd24d9d9`: log `request_received`/`response_sent` (tokens_in=32, latency_ms=1307) ↔ trace `84170c036bdbb600a6c074001dc49c99`. Trên Langfuse, lọc theo metadata `correlation_id` để tìm trace của một dòng log.
 - **Prompt name:** `day13-chat` (text prompt, giữ 3 biến `{{feature}}`, `{{docs}}`, `{{message}}`).
 - **Version/label baseline:** version 1, labels `baseline` (+ `production` ban đầu và sau rollback). Nội dung là template gốc.
@@ -102,7 +102,7 @@
 ## 9. Checklist trước khi nộp
 
 - [ ] Kết quả và evidence thuộc commit SHA cuối.
-- [ ] Tất cả ảnh/output mở được bằng đường dẫn tương đối.
+- [x] Tất cả ảnh/output mở được bằng đường dẫn tương đối.
 - [x] Incident evidence nối đúng metric → log → trace.
 - [ ] Trace/prompt evidence thuộc project Langfuse cá nhân và ảnh không lộ key/secret.
 - [x] Repository chạy lại được theo README.
