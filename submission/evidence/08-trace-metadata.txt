@@ -1,0 +1,72 @@
+# Trace metadata — trace 84170c036bdbb600a6c074001dc49c99; nguyên văn các trường từ Langfuse API (không có PII thô, input/output chỉ là preview đã scrub)
+
+## lab-agent-run
+{
+  "name": "lab-agent-run",
+  "type": "AGENT",
+  "environment": "dev",
+  "userId": "2055254ee30a",
+  "sessionId": "s-prompt",
+  "metadata": {
+    "correlation_id": "req-bd24d9d9",
+    "model": "claude-sonnet-4-5",
+    "feature": "qa",
+    "prompt_fetch_error": "",
+    "prompt_source": "langfuse",
+    "prompt_version": 1,
+    "prompt_label": "production",
+    "prompt_name": "day13-chat",
+    "query_preview": "Explain why metrics traces and logs work together",
+    "doc_count": 1
+  }
+}
+
+## retrieval
+{
+  "name": "retrieval",
+  "type": "RETRIEVER",
+  "parentObservationId": "8b2ff22b515c2b36",
+  "environment": "dev",
+  "userId": "2055254ee30a",
+  "sessionId": "s-prompt",
+  "metadata": {
+    "correlation_id": "req-bd24d9d9",
+    "model": "claude-sonnet-4-5",
+    "feature": "qa",
+    "doc_count": 1,
+    "tool_name": "retrieval"
+  },
+  "input": "{\"query_preview\": \"Explain why metrics traces and logs work together\"}",
+  "output": "{\"doc_count\": 1, \"doc_previews\": [\"No domain document matched. Use general fallback answer.\"]}"
+}
+
+## generation
+{
+  "name": "generation",
+  "type": "GENERATION",
+  "parentObservationId": "8b2ff22b515c2b36",
+  "environment": "dev",
+  "userId": "2055254ee30a",
+  "sessionId": "s-prompt",
+  "metadata": {
+    "correlation_id": "req-bd24d9d9",
+    "model": "claude-sonnet-4-5",
+    "feature": "qa",
+    "ttft_ms": 50
+  },
+  "model": "claude-sonnet-4-5",
+  "promptName": "day13-chat",
+  "promptVersion": 1,
+  "usageDetails": {
+    "input": 32,
+    "output": 152,
+    "total": 184
+  },
+  "costDetails": {
+    "input": 9.6e-05,
+    "output": 0.00228,
+    "total": 0.002376
+  },
+  "input": "Feature=qa Docs=No domain document matched. Use general fallback answer. Question=Explain why metrics traces and logs work together",
+  "output": "Starter answer. You should improve this output logic and add better quality checks. Use retrieved context and keep responses concise."
+}

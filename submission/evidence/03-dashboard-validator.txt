@@ -1,2 +1,2 @@
-$ python scripts/validate_dashboard.py
+# python scripts/validate_dashboard.py   (2026-09-30T16:58:16Z)
 HỢP LỆ: 6/6 panel có trong dashboard contract.

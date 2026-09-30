@@ -1,0 +1,32 @@
+# Prompt day13-chat — cùng input "Explain why metrics traces and logs work together" (feature=qa)
+# Nguồn: Langfuse project day13-k4-l3b-2A202602536, GET /api/public/v2/observations
+# Cột: thời gian (UTC) | trace_id | correlation_id | promptVersion (generation) | LANGFUSE_PROMPT_LABEL | prompt_source
+
+## Bước 1: so sánh label baseline / candidate / production
+2026-09-30T16:34:48Z | ed8886388574764a5902d56c67eb98e7 | req-9cc44aef | v1 | baseline   | langfuse
+2026-09-30T16:35:04Z | 3ddc0d8d645d5bbdfbe4516622a209be | req-7ab6921a | v2 | candidate  | langfuse
+2026-09-30T16:35:19Z | cc622dd00f3eb0426e67e3eed6b7df5d | req-71ffabff | v1 | production | langfuse   (production -> v1, trước khi promote)
+
+## Bước 2: promote production -> v2 (label production chuyển sang version 2)
+2026-09-30T16:41:15Z | 8aa7bd4843b95e917784c31f73e63515 | req-899a01c2 | v2 | production | langfuse
+2026-09-30T16:48:17Z | 63784068630f383a9f19a3859504cc5f | req-c7c1271d | v2 | production | langfuse   (tokens_in=43)
+
+## Bước 3: rollback production -> v1
+# PATCH /api/public/v2/prompts/day13-chat/versions/1 {"newLabels":["baseline","production"]} lúc 2026-09-30T16:48:35Z
+# Sau rollback: v1 labels = [baseline, production]; v2 labels = [latest, candidate]
+# Restart API để bỏ cache prompt (cache_ttl_seconds=60) rồi gửi lại cùng input
+2026-09-30T16:48:59Z | 84170c036bdbb600a6c074001dc49c99 | req-bd24d9d9 | v1 | production | langfuse   (tokens_in=32)
+
+## Workload sau rollback (scripts/load_test.py) — tất cả production -> v1
+2026-09-30T16:49:58Z | 313f380ac02f4f429b4df40461939381 | req-84d86086 | v1 | production | langfuse
+2026-09-30T16:49:58Z | 8b5bc43cd16722b9ae9480304bf65a9a | req-dd9e71b9 | v1 | production | langfuse
+2026-09-30T16:49:58Z | 228d35eca3a4518af4a80c5371d132ca | req-0ad615e0 | v1 | production | langfuse
+2026-09-30T16:49:58Z | 33fe0e09306b0bd6b419cb58d0679438 | req-f0f5a79f | v1 | production | langfuse
+2026-09-30T16:49:58Z | 5252b15daeeb5310f2af7a1f0e891d18 | req-395dac4b | v1 | production | langfuse
+2026-09-30T16:49:58Z | ac00ff77b7f5cf83eeb3342cf05451a9 | req-b4f46a9a | v1 | production | langfuse
+2026-09-30T16:49:58Z | fc5567ce06529297b9e6cc6a230d3851 | req-af199004 | v1 | production | langfuse
+2026-09-30T16:49:59Z | 4392021e14bffe58b144205b6dce9551 | req-7cd74b81 | v1 | production | langfuse
+2026-09-30T16:49:59Z | b973d95617f348c41ddec9a2cebed746 | req-9d14cb04 | v1 | production | langfuse
+2026-09-30T16:49:59Z | c20785219c673bd5aafdecfc7d734ad1 | req-5fecd0a5 | v1 | production | langfuse
+
+# Tổng: 16 traces trong project, mỗi trace có đủ lab-agent-run / retrieval / generation (16/16/16 observations).

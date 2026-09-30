@@ -1,0 +1,12 @@
+# Bước 1 CP3: metric từ data/logs.jsonl (nguồn của dashboard, python scripts/build_dashboard.py)
+# Challenge: day13-k4-l3b-monitoring-llmops-v1 | incident theo challenge.json | latency_threshold_ms = 2000
+# Các mốc (UTC): workload thường 16:56:52 | inject_incident 16:56:54 | load_test --challenge --concurrency 5 | disable 16:57:09 | workload thường tới 16:57:12
+
+Cửa sổ                          | n  | latency P50 / P95 / P99 (ms) | TTFT P95 | error | retrieval success | cost TB (USD) | quality TB
+Trước sự cố  16:56:53–16:56:55  | 10 | 152 / 179 / 179              | 50 ms    | 0     | 10/10             | 0.002086      | 0.88
+Sự cố        16:56:55–16:57:09  |  5 | 2652 / 2652 / 2652           | 50 ms    | 0     | 5/5               | 0.001896      | 0.84
+Sau khi tắt  16:57:09–16:57:12  | 10 | 152 / 153 / 153              | 50 ms    | 0     | 10/10             | 0.002188      | 0.88
+
+# Nhận xét: chỉ latency thay đổi (x17, vượt ngưỡng challenge 2000 ms). TTFT, error, retrieval success, token, cost gần như không đổi
+# -> vấn đề nằm trước bước generation. Toàn bộ 5 request bất thường có feature=monitoring.
+# Client (load_test) đo 8.0–13.3 s vì 5 request đồng thời bị xử lý tuần tự: /chat là async nhưng gọi agent.run đồng bộ (time.sleep chặn event loop).

@@ -1,0 +1,6 @@
+# Trace waterfall — trace 84170c036bdbb600a6c074001dc49c99 (correlation_id=req-bd24d9d9), trace name day13-agent-request
+# Cây observation theo parentObservationId (thụt lề = cấp con) | type | start (UTC) | latency_s
+day13-agent-request (trace)
+└── lab-agent-run | AGENT | 16:48:59.511 | 1.309
+    ├── retrieval | RETRIEVER | 16:48:59.511 | 0.001
+    └── generation | GENERATION | 16:49:00.667 | 0.152

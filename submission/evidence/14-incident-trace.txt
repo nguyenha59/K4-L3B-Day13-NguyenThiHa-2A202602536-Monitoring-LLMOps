@@ -1,0 +1,31 @@
+# Bước 3 CP3: trace cùng correlation_id, lấy từ Langfuse project day13-k4-l3b-2A202602536
+# GET /api/public/v2/observations?fromStartTime=2026-09-30T16:56:50Z  (latency tính bằng giây)
+# start (UTC) | trace_id | correlation_id | feature | lab-agent-run | retrieval | generation | prompt_version
+2026-09-30T16:56:53Z | 44ef5407b8540db7dc9ac3b0f20a53ab | req-31792a9c | qa | 0.186 | 0.006 | 0.153 | 1
+2026-09-30T16:56:53Z | 5193ee525d8e70e2f551514c1387c66b | req-d764ddd5 | qa | 0.153 | 0 | 0.152 | 1
+2026-09-30T16:56:53Z | 540b34f2294643dddcb1e4ca6bdd0ca4 | req-70d682dc | summary | 0.153 | 0.001 | 0.152 | 1
+2026-09-30T16:56:53Z | a7c2bf60f0a25b8a7a9ec297120da527 | req-ddb181c7 | qa | 0.153 | 0 | 0.152 | 1
+2026-09-30T16:56:53Z | e1de7b9912e222febca444bfc8ec9141 | req-a9f46008 | qa | 0.153 | 0 | 0.152 | 1
+2026-09-30T16:56:53Z | ecd4785cde8e1e35b6ba571635bc0303 | req-72634654 | summary | 0.152 | 0 | 0.152 | 1
+2026-09-30T16:56:54Z | 7a6fdf49c571a899ea079d2f239631a4 | req-51e6d1b5 | qa | 0.153 | 0.001 | 0.152 | 1
+2026-09-30T16:56:54Z | 9e5ab4bb05b10e111aa3df9301199e4b | req-3938c626 | qa | 0.153 | 0 | 0.152 | 1
+2026-09-30T16:56:54Z | ad663ce45d6b0808bb72a2c5b7d76dbe | req-86d1b2e2 | qa | 0.154 | 0 | 0.153 | 1
+2026-09-30T16:56:54Z | e378539d18ab703546d6a37263a40912 | req-dc6530e3 | qa | 0.152 | 0 | 0.151 | 1
+2026-09-30T16:56:55Z | 41268779ad0619b86a9301d11c4e916f | req-2fe0a88d | monitoring | 2.653 | 2.502 | 0.151 | 1   <-- incident
+2026-09-30T16:56:58Z | 561e840399bb7402a986e8453741811e | req-2b085c8a | monitoring | 2.652 | 2.5 | 0.151 | 1   <-- incident
+2026-09-30T16:57:01Z | d9b67aa7795f8bfb1c4e55093e2eee25 | req-46548fd0 | monitoring | 2.652 | 2.5 | 0.151 | 1   <-- incident
+2026-09-30T16:57:03Z | 6033395d77307454c8b895837497987c | req-8c0f9ed3 | monitoring | 2.654 | 2.501 | 0.151 | 1   <-- incident
+2026-09-30T16:57:06Z | e77ab0d2ee91c1964281b9d97c386389 | req-bd017ebb | monitoring | 2.652 | 2.501 | 0.151 | 1   <-- incident
+2026-09-30T16:57:10Z | 0af0f3ae8ca4d5c2963fdcf47742613b | req-73bc7ec4 | summary | 0.153 | 0 | 0.152 | 1
+2026-09-30T16:57:10Z | 286ec29061eefdb4cba51484ddb81089 | req-52abc8b8 | qa | 0.153 | 0.001 | 0.152 | 1
+2026-09-30T16:57:10Z | d5462db9ecd1de8452ed746008d0ccf7 | req-369f5c40 | qa | 0.152 | 0 | 0.151 | 1
+2026-09-30T16:57:10Z | eb3137212e3dfdbe11e5558ed2725837 | req-6ab4e086 | qa | 0.153 | 0.001 | 0.152 | 1
+2026-09-30T16:57:11Z | 2bd9931abad057b017bba5625edb6e23 | req-51182431 | qa | 0.153 | 0 | 0.151 | 1
+2026-09-30T16:57:11Z | 41d9d032b7e452330e4db1d1664922e1 | req-e5329b83 | qa | 0.152 | 0 | 0.152 | 1
+2026-09-30T16:57:11Z | 552858fcd61bb55791cdce730b12385a | req-b224c528 | qa | 0.154 | 0.002 | 0.152 | 1
+2026-09-30T16:57:11Z | 68e4cb466afad400ff229fcc5a90f287 | req-0978a404 | summary | 0.155 | 0 | 0.153 | 1
+2026-09-30T16:57:11Z | 85ea01797e650d3144ddc4eb86a4aba6 | req-bffd81a7 | qa | 0.152 | 0 | 0.151 | 1
+2026-09-30T16:57:11Z | 87fd0ca20cd073658043d4b5b251b50a | req-9c92c4b8 | qa | 0.153 | 0 | 0.152 | 1
+
+# Kết luận: với 5 trace monitoring, retrieval ~2.50 s trên tổng ~2.65 s (94%); generation giữ ~0.15 s như bình thường.
+# Trace đại diện: 41268779ad0619b86a9301d11c4e916f  (correlation_id=req-2fe0a88d)

@@ -149,7 +149,7 @@ def fmt(value: float | None, unit: str) -> str:
 
 
 def line_chart(slots: list[datetime], series: list[tuple[str, list[float | None]]], threshold: float, unit: str) -> str:
-    w, h, pl, pr, pt, pb = 560, 220, 64, 16, 12, 28
+    w, h, pl, pr, pt, pb = 560, 220, 84, 16, 12, 28
     values = [v for _, vals in series for v in vals if v is not None]
     ymax = max(values + [threshold]) * 1.15 or 1.0
     n = len(slots)

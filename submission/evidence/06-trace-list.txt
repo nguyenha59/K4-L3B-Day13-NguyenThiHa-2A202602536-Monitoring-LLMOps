@@ -1,0 +1,44 @@
+# Trace list — Langfuse project của học viên (key trong .env), GET /api/public/v2/observations?name=lab-agent-run
+# Tổng: 41 traces day13-agent-request, environment=dev
+# start (UTC) | trace_id | correlation_id | feature | session_id | user_id (hash) | latency_s | prompt label/version
+2026-09-30T16:34:48Z | ed8886388574764a5902d56c67eb98e7 | req-9cc44aef | qa | s-prompt-compare | 1bcbaa7b5b0a | 2.222 | baseline/1
+2026-09-30T16:35:04Z | 3ddc0d8d645d5bbdfbe4516622a209be | req-7ab6921a | qa | s-prompt-compare | 1bcbaa7b5b0a | 1.754 | candidate/2
+2026-09-30T16:35:19Z | cc622dd00f3eb0426e67e3eed6b7df5d | req-71ffabff | qa | s-prompt-compare | 1bcbaa7b5b0a | 1.337 | production/1
+2026-09-30T16:41:15Z | 8aa7bd4843b95e917784c31f73e63515 | req-899a01c2 | qa | s-prompt-compare | 1bcbaa7b5b0a | 1.475 | production/2
+2026-09-30T16:48:17Z | 63784068630f383a9f19a3859504cc5f | req-c7c1271d | qa | s-prompt | 2055254ee30a | 2.217 | production/2
+2026-09-30T16:48:59Z | 84170c036bdbb600a6c074001dc49c99 | req-bd24d9d9 | qa | s-prompt | 2055254ee30a | 1.309 | production/1
+2026-09-30T16:49:58Z | 313f380ac02f4f429b4df40461939381 | req-84d86086 | qa | s01 | 2055254ee30a | 0.155 | production/1
+2026-09-30T16:49:58Z | 8b5bc43cd16722b9ae9480304bf65a9a | req-dd9e71b9 | qa | s02 | 95b6504a8bd6 | 0.151 | production/1
+2026-09-30T16:49:58Z | 228d35eca3a4518af4a80c5371d132ca | req-0ad615e0 | summary | s03 | 97ce842ec69d | 0.153 | production/1
+2026-09-30T16:49:58Z | 33fe0e09306b0bd6b419cb58d0679438 | req-f0f5a79f | qa | s04 | 75af07890985 | 0.153 | production/1
+2026-09-30T16:49:58Z | 5252b15daeeb5310f2af7a1f0e891d18 | req-395dac4b | qa | s05 | 64f6ec689229 | 0.152 | production/1
+2026-09-30T16:49:58Z | ac00ff77b7f5cf83eeb3342cf05451a9 | req-b4f46a9a | summary | s06 | 4c4f62330d76 | 0.155 | production/1
+2026-09-30T16:49:58Z | fc5567ce06529297b9e6cc6a230d3851 | req-af199004 | qa | s07 | 1632c29ecdec | 0.153 | production/1
+2026-09-30T16:49:59Z | 4392021e14bffe58b144205b6dce9551 | req-7cd74b81 | qa | s08 | 2f015d970c0b | 0.152 | production/1
+2026-09-30T16:49:59Z | b973d95617f348c41ddec9a2cebed746 | req-9d14cb04 | qa | s09 | 4d14d5d4f719 | 0.152 | production/1
+2026-09-30T16:49:59Z | c20785219c673bd5aafdecfc7d734ad1 | req-5fecd0a5 | qa | s10 | 105a9cef3903 | 0.153 | production/1
+2026-09-30T16:56:53Z | 44ef5407b8540db7dc9ac3b0f20a53ab | req-31792a9c | qa | s01 | 2055254ee30a | 0.186 | production/1
+2026-09-30T16:56:53Z | 5193ee525d8e70e2f551514c1387c66b | req-d764ddd5 | qa | s02 | 95b6504a8bd6 | 0.153 | production/1
+2026-09-30T16:56:53Z | 540b34f2294643dddcb1e4ca6bdd0ca4 | req-70d682dc | summary | s03 | 97ce842ec69d | 0.153 | production/1
+2026-09-30T16:56:53Z | a7c2bf60f0a25b8a7a9ec297120da527 | req-ddb181c7 | qa | s04 | 75af07890985 | 0.153 | production/1
+2026-09-30T16:56:53Z | e1de7b9912e222febca444bfc8ec9141 | req-a9f46008 | qa | s05 | 64f6ec689229 | 0.153 | production/1
+2026-09-30T16:56:53Z | ecd4785cde8e1e35b6ba571635bc0303 | req-72634654 | summary | s06 | 4c4f62330d76 | 0.152 | production/1
+2026-09-30T16:56:54Z | ad663ce45d6b0808bb72a2c5b7d76dbe | req-86d1b2e2 | qa | s07 | 1632c29ecdec | 0.154 | production/1
+2026-09-30T16:56:54Z | 7a6fdf49c571a899ea079d2f239631a4 | req-51e6d1b5 | qa | s08 | 2f015d970c0b | 0.153 | production/1
+2026-09-30T16:56:54Z | 9e5ab4bb05b10e111aa3df9301199e4b | req-3938c626 | qa | s09 | 4d14d5d4f719 | 0.153 | production/1
+2026-09-30T16:56:54Z | e378539d18ab703546d6a37263a40912 | req-dc6530e3 | qa | s10 | 105a9cef3903 | 0.152 | production/1
+2026-09-30T16:56:55Z | 41268779ad0619b86a9301d11c4e916f | req-2fe0a88d | monitoring | k4-l3b-challenge-s01 | 4a1a454d70a9 | 2.653 | production/1
+2026-09-30T16:56:58Z | 561e840399bb7402a986e8453741811e | req-2b085c8a | monitoring | k4-l3b-challenge-s05 | 68e37dc7cb5e | 2.652 | production/1
+2026-09-30T16:57:01Z | d9b67aa7795f8bfb1c4e55093e2eee25 | req-46548fd0 | monitoring | k4-l3b-challenge-s04 | c3a24a72d92a | 2.652 | production/1
+2026-09-30T16:57:03Z | 6033395d77307454c8b895837497987c | req-8c0f9ed3 | monitoring | k4-l3b-challenge-s03 | 189d0a182d4e | 2.654 | production/1
+2026-09-30T16:57:06Z | e77ab0d2ee91c1964281b9d97c386389 | req-bd017ebb | monitoring | k4-l3b-challenge-s02 | 2f2fc5ebba0b | 2.652 | production/1
+2026-09-30T16:57:10Z | eb3137212e3dfdbe11e5558ed2725837 | req-6ab4e086 | qa | s01 | 2055254ee30a | 0.153 | production/1
+2026-09-30T16:57:10Z | d5462db9ecd1de8452ed746008d0ccf7 | req-369f5c40 | qa | s02 | 95b6504a8bd6 | 0.152 | production/1
+2026-09-30T16:57:10Z | 0af0f3ae8ca4d5c2963fdcf47742613b | req-73bc7ec4 | summary | s03 | 97ce842ec69d | 0.153 | production/1
+2026-09-30T16:57:10Z | 286ec29061eefdb4cba51484ddb81089 | req-52abc8b8 | qa | s04 | 75af07890985 | 0.153 | production/1
+2026-09-30T16:57:11Z | 552858fcd61bb55791cdce730b12385a | req-b224c528 | qa | s05 | 64f6ec689229 | 0.154 | production/1
+2026-09-30T16:57:11Z | 68e4cb466afad400ff229fcc5a90f287 | req-0978a404 | summary | s06 | 4c4f62330d76 | 0.155 | production/1
+2026-09-30T16:57:11Z | 2bd9931abad057b017bba5625edb6e23 | req-51182431 | qa | s07 | 1632c29ecdec | 0.153 | production/1
+2026-09-30T16:57:11Z | 87fd0ca20cd073658043d4b5b251b50a | req-9c92c4b8 | qa | s08 | 2f015d970c0b | 0.153 | production/1
+2026-09-30T16:57:11Z | 41d9d032b7e452330e4db1d1664922e1 | req-e5329b83 | qa | s09 | 4d14d5d4f719 | 0.152 | production/1
+2026-09-30T16:57:11Z | 85ea01797e650d3144ddc4eb86a4aba6 | req-bffd81a7 | qa | s10 | 105a9cef3903 | 0.152 | production/1
