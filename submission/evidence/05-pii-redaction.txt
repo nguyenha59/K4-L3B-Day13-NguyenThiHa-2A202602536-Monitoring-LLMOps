@@ -1,0 +1,7 @@
+# Input test chỉ chứa PII GIẢ (email, SĐT VN, CCCD, thẻ):
+POST /chat message="a@test.vn 0912345678 079123456789 4111 1111-1111 1111"
+# Response header x-request-id: req-4f436dd3
+
+# Log trong data/logs.jsonl — PII đã scrub trước khi render/ghi file:
+{"service": "api", "payload": {"message_preview": "[REDACTED_EMAIL] [REDACTED_PHONE_VN] [REDACTED_CCCD] [REDACTED_CREDIT_CARD]"}, "event": "request_received", "correlation_id": "req-4f436dd3", "feature": "qa", "model": "claude-sonnet-4-5", "user_id_hash": "4c5fd778540c", "session_id": "s-pii", "env": "dev", "level": "info", "ts": "2026-09-30T15:54:51.563523Z"}
+{"service": "api", "latency_ms": 151, "ttft_ms": 50, "tokens_in": 33, "tokens_out": 158, "cost_usd": 0.002469, "quality_score": 0.8, "tool_name": "retrieval", "tool_success": true, "payload": {"answer_preview": "Starter answer. You should improve this output logic and add better quality chec..."}, "event": "response_sent", "correlation_id": "req-4f436dd3", "feature": "qa", "model": "claude-sonnet-4-5", "user_id_hash": "4c5fd778540c", "session_id": "s-pii", "env": "dev", "level": "info", "ts": "2026-09-30T15:54:51.716946Z"}

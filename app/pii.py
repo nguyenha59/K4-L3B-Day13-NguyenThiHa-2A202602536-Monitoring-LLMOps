@@ -3,12 +3,17 @@ from __future__ import annotations
 import hashlib
 import re
 
+# Thứ tự quan trọng (dict giữ thứ tự chèn):
+# - CCCD (12 số liền) che trước thẻ: nếu không, "CCCD + khoảng trắng + thẻ" bị regex thẻ
+#   match nhầm "12 số CCCD + 4 số đầu thẻ", để lộ 12 số cuối của thẻ.
+# - Thẻ che trước SĐT để pattern SĐT không cắt vụn một số thẻ.
 PII_PATTERNS: dict[str, str] = {
     "email": r"[\w\.-]+@[\w\.-]+\.\w+",
-    "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
     "cccd": r"\b\d{12}\b",
     "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
-    # TODO: Add more patterns (e.g., Passport, Vietnamese address keywords)
+    "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
+    # Hộ chiếu Việt Nam: 1 chữ cái in hoa + 7 chữ số, ví dụ B1234567.
+    "passport": r"\b[A-Z]\d{7}\b",
 }
 
 
